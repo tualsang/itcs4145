@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+
 using namespace std;
 
 vector<int> merge(vector<int> a, vector<int> b) {
@@ -46,22 +48,25 @@ vector<int> mergeSort(vector<int> a) {
 }
 
 int main() {
-    vector<int> forSorting = {8,4,2,1,5,0,9,7,3,6};
-    
+    vector<int> forSorting = {};
+
+    for (int i = 0; i < 9; i++) {
+        int randomNum = rand() % 100;
+        forSorting.push_back(randomNum);
+    }
+
+    cout << "Integers to Sort: " << endl;
+    for (int num : forSorting) {
+        cout << num << ", ";
+    }
+
     vector<int> sorted = mergeSort(forSorting);
+
     
-    cout << "sorted Array: ";
+    cout << endl << "Sorted Array: " << endl;
     for (int num : sorted) {
-        cout << num << " ";
+        cout << num << ", ";
     }
 
     return 0;
 }
-
-
-
-
-
-
-
-
