@@ -47,10 +47,21 @@ vector<int> mergeSort(vector<int> a) {
     return merge(arrayOne, arrayTwo);
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+    if (argc != 2) {    // Error if user have more than 1 argument.
+        cout << "Error usage, only 1 argument" << endl;
+        return 1;
+    }
+
+    int n = atoi(argv[1]);  // convert input into integer.
+    if (n <= 0) {
+        cout << "Error: Array size must be positive" << endl;
+        return 1;
+    }
+
     vector<int> forSorting = {};
 
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < n; i++) {
         int randomNum = rand() % 100;
         forSorting.push_back(randomNum);
     }
