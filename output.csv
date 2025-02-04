@@ -1,13 +1,13 @@
 Integers to Sort: 
-987 632 195 401 219 120 229 863 762 853 
-Time taken by merge sort: 0.023 milliseconds.
+763 139 857 161 905 825 553 978 693 243 
+Time taken by merge sort: 0.024 milliseconds.
 
 Sorted Array: 
-120 195 219 229 401 632 762 853 863 987 
-Time taken by merge sort: 0.207 milliseconds.
-Time taken by merge sort: 2.063 milliseconds.
-Time taken by merge sort: 22.105 milliseconds.
-Time taken by merge sort: 227.382 milliseconds.
-Time taken by merge sort: 2300.9 milliseconds.
-Time taken by merge sort: 24471.8 milliseconds.
-slurmstepd: error: *** JOB 6657 ON gal-c1 CANCELLED AT 2025-02-04T11:50:25 DUE TO TIME LIMIT ***
+139 161 243 553 693 763 825 857 905 978 
+Time taken by merge sort: 0.208 milliseconds.
+Time taken by merge sort: 2.051 milliseconds.
+Time taken by merge sort: 22.16 milliseconds.
+Time taken by merge sort: 227.416 milliseconds.
+Time taken by merge sort: 2303.15 milliseconds.
+Time taken by merge sort: 24466.6 milliseconds.
+Time taken by merge sort: 252046 milliseconds.
