@@ -1,12 +1,13 @@
 #include <iostream>
-#include <vector>
+#include <vector>       // for array vectors
 #include <cstdlib>
+#include <ctime>        // for timing aka clocks
 
 using namespace std;
 
 vector<int> merge(vector<int> a, vector<int> b) {
     vector<int> c;
-    int i = 0, j = 0;
+    size_t i = 0, j = 0;
 
     while (i < a.size() && j < b.size()) {
         if(a[i] < b[j]) {
@@ -32,11 +33,11 @@ vector<int> merge(vector<int> a, vector<int> b) {
 }
 
 vector<int> mergeSort(vector<int> a) {
-    if (a.size() == 1) {
+    if (a.size() <= 1) {
         return a;
     }
     
-    int mid = a.size() / 2;
+    size_t mid = a.size() / 2;
     
     vector<int> arrayOne(a.begin(), a.begin() + mid);  // First half
     vector<int> arrayTwo(a.begin() + mid, a.end());    // Second half
@@ -49,34 +50,48 @@ vector<int> mergeSort(vector<int> a) {
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {    // Error if user have more than 1 argument.
-        cout << "Error usage, only 1 argument" << endl;
+        cerr << "Usage: " << argv[0] << "<array_size>" << endl;
         return 1;
     }
 
-    int n = atoi(argv[1]);  // convert input into integer.
+    size_t n = atoi(argv[1]);  // convert input into size_t
     if (n <= 0) {
-        cout << "Error: Array size must be positive" << endl;
+        cerr << "Error: Array size must be positive" << endl;
         return 1;
     }
 
-    vector<int> forSorting = {};
+    // Seed the random number generator
+    srand(static_cast<unsigned int>(time(nullptr)));
 
-    for (int i = 0; i < n; i++) {
-        int randomNum = rand() % 100;
-        forSorting.push_back(randomNum);
+    vector<int> forSorting(n);
+
+    for (size_t i = 0; i < n; i++) {
+        forSorting[i] = rand() % 1000;  // Random Number from 0 - 999
     }
 
-    cout << "Integers to Sort: " << endl;
-    for (int num : forSorting) {
-        cout << num << ", ";
+    if (n <= 20) {
+        cout << "Integers to Sort: " << endl;
+        for (size_t i = 0; i < n; i++) {
+            cout << forSorting[i] << " ";
+        }
+        cout << endl;
     }
+
+    clock_t start = clock();    // Starts timing.
 
     vector<int> sorted = mergeSort(forSorting);
 
-    
-    cout << endl << "Sorted Array: " << endl;
-    for (int num : sorted) {
-        cout << num << ", ";
+    clock_t end = clock();      // Stop timing.
+    double duration = double(end - start) / CLOCKS_PER_SEC * 1e3;   // Convert to milliseconds.
+
+    cerr << "Time taken by merge sort: " << duration << " milliseconds." << endl;
+
+    if (n <= 20) {
+        cout << endl << "Sorted Array: " << endl;
+        for (size_t i = 0; i < n; i++) {
+            cout << sorted[i] << " ";
+        }
+        cout << endl;
     }
 
     return 0;
